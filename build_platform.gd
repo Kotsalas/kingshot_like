@@ -18,9 +18,11 @@ func _ready() -> void:
 
 func _on_body_entered(body):
 	if body.name == "Player":
-		platform_helper.focus_platform()
 		player_is_building = true
 		$BuildTimer.start()
+		
+		if not build_completed:
+			platform_helper.focus_platform()
 
 func _on_body_exited(body):
 	if body.name == "Player":

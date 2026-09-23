@@ -9,6 +9,7 @@ extends Area3D
 var coins_spent := 0
 var coins_in_flight := 0
 var player_is_upgrading := false
+var upgrade_completed := false
 
 func _ready() -> void:
 	$Visual/Sprite3D.texture = $SubViewport.get_texture()
@@ -16,15 +17,19 @@ func _ready() -> void:
 
 func _on_body_entered(body):
 	if body.name == "Player":
-		platform_helper.focus_platform()
 		player_is_upgrading = true
 		$UpgradeTimer.start()
+		
+		if not upgrade_completed:
+			platform_helper.focus_platform()
 
 func _on_body_exited(body):
 	if body.name == "Player":
-		platform_helper.unfocus_platform()
 		player_is_upgrading = false
 		$UpgradeTimer.stop()
+		
+		if not upgrade_completed:
+			platform_helper.unfocus_platform()
 
 func _on_upgrade_timer_timeout():	
 	if not player_is_upgrading:
@@ -65,6 +70,7 @@ func add_coins(amount):
 	update_progress_text()
 	
 	if coins_spent >= tower.upgrade_cost:
+		upgrade_completed = true
 		$UpgradeTimer.stop()
 		await platform_helper.complete_platform()
 		tower.upgrade()
