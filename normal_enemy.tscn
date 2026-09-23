@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://dk75hb6nsdudh"]
+
+[ext_resource type="Script" uid="uid://caj72wyhdpind" path="res://enemy.gd" id="1_7k104"]
+[ext_resource type="PackedScene" uid="uid://d31vtfred4khg" path="res://models/enemies/normal_enemy.glb" id="2_xxt1b"]
+[ext_resource type="Script" uid="uid://d3p26oycb0pdf" path="res://health_bar_helper.gd" id="3_l400q"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_r3fl7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l400q"]
+bg_color = Color(0.068798296, 0.06879826, 0.06879828, 0.85490197)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_rdj4b"]
+viewport_path = NodePath("HealthBarViewport")
+
+[node name="NormalEnemy" type="CharacterBody3D" unique_id=647733292 groups=["enemies"]]
+script = ExtResource("1_7k104")
+
+[node name="normal_enemy" parent="." unique_id=961384178 instance=ExtResource("2_xxt1b")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2082251375]
+shape = SubResource("CapsuleShape3D_r3fl7")
+
+[node name="HealthBarViewport" type="SubViewport" parent="." unique_id=406558764]
+transparent_bg = true
+size = Vector2i(150, 25)
+
+[node name="BackgroundPanel" type="Panel" parent="HealthBarViewport" unique_id=793922054]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_l400q")
+
+[node name="HealthBar" type="ProgressBar" parent="HealthBarViewport" unique_id=1768294385]
+z_index = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 1
+
+[node name="DamageBar" type="ProgressBar" parent="HealthBarViewport" unique_id=401746598]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 1
+
+[node name="HealthBarHelper" type="Node" parent="HealthBarViewport" unique_id=1350744038 node_paths=PackedStringArray("health_bar", "damage_bar", "background_panel", "health_bar_viewport")]
+script = ExtResource("3_l400q")
+health_bar = NodePath("../HealthBar")
+damage_bar = NodePath("../DamageBar")
+background_panel = NodePath("../BackgroundPanel")
+health_bar_viewport = NodePath("..")
+
+[node name="HealthBarSprite" type="Sprite3D" parent="." unique_id=1825304656]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+billboard = 1
+texture = SubResource("ViewportTexture_rdj4b")

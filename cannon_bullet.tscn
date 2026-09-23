@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://otvs4j2hrwub"]
+
+[ext_resource type="Script" uid="uid://ct0gj5p7lf42n" path="res://bullet.gd" id="1_0sexk"]
+[ext_resource type="PackedScene" uid="uid://b78p7xe771h61" path="res://coin.tscn" id="2_g638n"]
+[ext_resource type="PackedScene" uid="uid://pqy2f1osii58" path="res://models/bullets/cannon_bullet.glb" id="2_osxer"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_g638n"]
+radius = 0.3
+
+[node name="CannonBullet" type="Area3D" unique_id=1183110183]
+script = ExtResource("1_0sexk")
+speed = 15.0
+coin_scene = ExtResource("2_g638n")
+
+[node name="cannon_bullet" parent="." unique_id=39603211 instance=ExtResource("2_osxer")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=669303033]
+shape = SubResource("SphereShape3D_g638n")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

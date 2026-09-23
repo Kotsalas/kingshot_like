@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://b78p7xe771h61"]
+
+[ext_resource type="Script" uid="uid://bqivdvqck0pra" path="res://coin.gd" id="1_0t63x"]
+[ext_resource type="Shader" uid="uid://wikrajg3p2mq" path="res://toon_outline.gdshader" id="2_0t63x"]
+[ext_resource type="PackedScene" uid="uid://b4fup23femjp3" path="res://models/coin.glb" id="2_v7riw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v7riw"]
+render_priority = 0
+shader = ExtResource("2_0t63x")
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/outline_width = 0.010000000475
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pdq0q"]
+diffuse_mode = 3
+specular_mode = 2
+albedo_color = Color(0.5166488, 0.50227135, 0.13714963, 1)
+roughness = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w14il"]
+render_priority = 0
+shader = ExtResource("2_0t63x")
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/outline_width = 0.010000000475
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h4etq"]
+diffuse_mode = 3
+specular_mode = 2
+albedo_color = Color(0.7243204, 0.706091, 0.20736635, 1)
+roughness = 0.0
+
+[node name="coin" unique_id=1192922106 instance=ExtResource("2_v7riw")]
+script = ExtResource("1_0t63x")
+travel_time = 0.8
+arc_height = 3.0
+
+[node name="Plane" parent="." index="0" unique_id=917603579]
+material_overlay = SubResource("ShaderMaterial_v7riw")
+surface_material_override/0 = SubResource("StandardMaterial3D_pdq0q")
+
+[node name="Circle" parent="." index="1" unique_id=77534343]
+material_overlay = SubResource("ShaderMaterial_w14il")
+surface_material_override/0 = SubResource("StandardMaterial3D_h4etq")

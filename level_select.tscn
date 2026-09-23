@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://casevpm605cov"]
+
+[ext_resource type="Script" uid="uid://b50bsqlf2j7ke" path="res://level_select.gd" id="1_il3u1"]
+[ext_resource type="Script" uid="uid://5ofbq025xl06" path="res://button_feedback.gd" id="2_vomi7"]
+
+[node name="LevelSelect" type="Control" unique_id=2051883204]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_il3u1")
+
+[node name="ChapterTitle" type="Label" parent="." unique_id=2016288370]
+layout_mode = 0
+offset_left = 534.0
+offset_top = 4.0
+offset_right = 574.0
+offset_bottom = 27.0
+
+[node name="LeftArrow" type="Button" parent="." unique_id=2014457618]
+layout_mode = 0
+offset_left = 471.0
+offset_top = 5.0
+offset_right = 494.0
+offset_bottom = 36.0
+text = "<-"
+script = ExtResource("2_vomi7")
+
+[node name="RightArrow" type="Button" parent="." unique_id=486962108]
+layout_mode = 0
+offset_left = 625.0
+offset_top = 9.0
+offset_right = 648.0
+offset_bottom = 40.0
+text = "->"
+script = ExtResource("2_vomi7")
+
+[node name="Levels" type="Node" parent="." unique_id=1496811768]
+
+[node name="Level1Button" type="Button" parent="Levels" unique_id=531494330]
+offset_left = 132.0
+offset_top = 34.0
+offset_right = 199.0
+offset_bottom = 65.0
+text = "LEVEL 1"
+script = ExtResource("2_vomi7")
+
+[node name="Level2Button" type="Button" parent="Levels" unique_id=797857862]
+offset_left = 134.0
+offset_top = 82.0
+offset_right = 201.0
+offset_bottom = 113.0
+text = "LEVEL 2"
+script = ExtResource("2_vomi7")
+
+[node name="Level3Button" type="Button" parent="Levels" unique_id=1467932739]
+offset_left = 137.0
+offset_top = 127.0
+offset_right = 204.0
+offset_bottom = 158.0
+text = "LEVEL 3"
+script = ExtResource("2_vomi7")
+
+[node name="Level4Button" type="Button" parent="Levels" unique_id=1680088475]
+offset_left = 139.0
+offset_top = 170.0
+offset_right = 206.0
+offset_bottom = 201.0
+text = "LEVEL 4"
+script = ExtResource("2_vomi7")
+
+[node name="Level5Button" type="Button" parent="Levels" unique_id=440084363]
+offset_left = 141.0
+offset_top = 221.0
+offset_right = 208.0
+offset_bottom = 252.0
+text = "LEVEL 5"
+script = ExtResource("2_vomi7")
+
+[connection signal="button_down" from="LeftArrow" to="LeftArrow" method="_on_button_down"]
+[connection signal="button_up" from="LeftArrow" to="." method="_on_left_arrow_button_up"]
+[connection signal="button_up" from="LeftArrow" to="LeftArrow" method="_on_button_up"]
+[connection signal="button_down" from="RightArrow" to="RightArrow" method="_on_button_down"]
+[connection signal="button_up" from="RightArrow" to="." method="_on_right_arrow_button_up"]
+[connection signal="button_up" from="RightArrow" to="RightArrow" method="_on_button_up"]
+[connection signal="button_down" from="Levels/Level1Button" to="Levels/Level1Button" method="_on_button_down"]
+[connection signal="button_up" from="Levels/Level1Button" to="." method="_on_level_1_button_button_up"]
+[connection signal="button_up" from="Levels/Level1Button" to="Levels/Level1Button" method="_on_button_up"]
+[connection signal="button_down" from="Levels/Level2Button" to="Levels/Level2Button" method="_on_button_down"]
+[connection signal="button_up" from="Levels/Level2Button" to="." method="_on_level_2_button_button_up"]
+[connection signal="button_up" from="Levels/Level2Button" to="Levels/Level2Button" method="_on_button_up"]
+[connection signal="button_down" from="Levels/Level3Button" to="Levels/Level3Button" method="_on_button_down"]
+[connection signal="button_up" from="Levels/Level3Button" to="." method="_on_level_3_button_button_up"]
+[connection signal="button_up" from="Levels/Level3Button" to="Levels/Level3Button" method="_on_button_up"]
+[connection signal="button_down" from="Levels/Level4Button" to="Levels/Level4Button" method="_on_button_down"]
+[connection signal="button_up" from="Levels/Level4Button" to="." method="_on_level_4_button_button_up"]
+[connection signal="button_up" from="Levels/Level4Button" to="Levels/Level4Button" method="_on_button_up"]
+[connection signal="button_down" from="Levels/Level5Button" to="Levels/Level5Button" method="_on_button_down"]
+[connection signal="button_up" from="Levels/Level5Button" to="." method="_on_level_5_button_button_up"]
+[connection signal="button_up" from="Levels/Level5Button" to="Levels/Level5Button" method="_on_button_up"]
