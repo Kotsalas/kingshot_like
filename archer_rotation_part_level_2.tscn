@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://bxnbyny582g0u"]
+
+[ext_resource type="PackedScene" uid="uid://cojmcpld7c68y" path="res://models/towers/archer_tower/archer_rotation_part_level2.glb" id="1_lnmlp"]
+[ext_resource type="Shader" uid="uid://bhec3au3iu4vr" path="res://toon_shader.gdshader" id="2_tecsf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d2o3m"]
+render_priority = 0
+shader = ExtResource("2_tecsf")
+shader_parameter/outline_color = Color(0.4, 0.29803923, 0.44313726, 1)
+shader_parameter/outline_width = 0.05600000266
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jhcbp"]
+diffuse_mode = 3
+specular_mode = 2
+albedo_color = Color(0.9372549, 0.7529412, 0.6901961, 1)
+roughness = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_us5ui"]
+render_priority = 0
+shader = ExtResource("2_tecsf")
+shader_parameter/outline_color = Color(0.4, 0.29803923, 0.44313726, 1)
+shader_parameter/outline_width = 0.0550000026125
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ogrj"]
+diffuse_mode = 3
+specular_mode = 2
+albedo_color = Color(0.9882353, 0.94509804, 0.8745098, 1)
+roughness = 0.0
+
+[node name="archer_rotation_part_level2" unique_id=91764373 instance=ExtResource("1_lnmlp")]
+
+[node name="Icosphere" parent="." index="0" unique_id=376345465]
+material_overlay = SubResource("ShaderMaterial_d2o3m")
+surface_material_override/0 = SubResource("StandardMaterial3D_jhcbp")
+
+[node name="Torus" parent="." index="1" unique_id=1876174392]
+material_overlay = SubResource("ShaderMaterial_us5ui")
+surface_material_override/0 = SubResource("StandardMaterial3D_6ogrj")

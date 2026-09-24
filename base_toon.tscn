@@ -1,23 +1,54 @@
 [gd_scene format=3 uid="uid://crohgg75acgqi"]
 
 [ext_resource type="PackedScene" uid="uid://becnnu5dfxrvt" path="res://models/base.glb" id="1_2sjal"]
-[ext_resource type="Shader" uid="uid://wikrajg3p2mq" path="res://toon_outline.gdshader" id="2_ol55c"]
+
+[sub_resource type="Shader" id="Shader_83q3n"]
+code = "shader_type spatial;
+
+render_mode unshaded, cull_front, fog_disabled;
+
+uniform vec4 outline_color : source_color = vec4(0, 0, 0, 1.0);
+uniform float outline_width : hint_range(0.0, 0.1, 0.001) = 0.1;
+
+void vertex() {
+	VERTEX += NORMAL * outline_width;
+}
+
+void fragment() {
+	ALBEDO = outline_color.rgb;
+}
+"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2sjal"]
 render_priority = 0
-shader = ExtResource("2_ol55c")
+shader = SubResource("Shader_83q3n")
 shader_parameter/outline_color = Color(0.08627451, 0.11764706, 0.23529412, 1)
 shader_parameter/outline_width = 0.10000000149012
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_25833"]
+render_priority = 1
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+grow = true
+grow_amount = 0.01
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
+metadata/_stencil_owned = true
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_83q3n"]
+next_pass = SubResource("StandardMaterial3D_25833")
 diffuse_mode = 3
 specular_mode = 2
 albedo_color = Color(0.15686275, 0.27450982, 0.40784314, 1)
 roughness = 0.0
+stencil_mode = 1
+stencil_flags = 2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ol55c"]
 render_priority = 0
-shader = ExtResource("2_ol55c")
+shader = SubResource("Shader_83q3n")
 shader_parameter/outline_color = Color(0.08627451, 0.11764706, 0.23529412, 1)
 shader_parameter/outline_width = 0.10000000149012
 
@@ -26,10 +57,11 @@ diffuse_mode = 3
 specular_mode = 2
 albedo_color = Color(0.21568628, 0.5254902, 0.58431375, 1)
 roughness = 0.0
+stencil_flags = 2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_25833"]
 render_priority = 0
-shader = ExtResource("2_ol55c")
+shader = SubResource("Shader_83q3n")
 shader_parameter/outline_color = Color(0.08627451, 0.11764706, 0.23529412, 1)
 shader_parameter/outline_width = 0.1
 
@@ -38,6 +70,7 @@ diffuse_mode = 3
 specular_mode = 2
 albedo_color = Color(0.41568628, 0.72156864, 0.72156864, 1)
 roughness = 0.0
+stencil_flags = 2
 
 [node name="base" unique_id=512834270 instance=ExtResource("1_2sjal")]
 

@@ -2,25 +2,18 @@
 
 [ext_resource type="Script" uid="uid://ceugpwl2qgwmi" path="res://tower.gd" id="1_pel6m"]
 [ext_resource type="PackedScene" uid="uid://otvs4j2hrwub" path="res://cannon_bullet.tscn" id="2_pel6m"]
-[ext_resource type="PackedScene" uid="uid://bx7mqaf5s56nw" path="res://models/towers/cannon_tower/cannon_base_level1.glb" id="3_pel6m"]
-[ext_resource type="PackedScene" uid="uid://bvu0eggvmg3nw" path="res://models/towers/cannon_tower/cannon_base_level2.glb" id="4_wxr12"]
-[ext_resource type="PackedScene" uid="uid://dd1m5kuob1jfe" path="res://models/towers/cannon_tower/cannon_rotation_part_level1.glb" id="5_81hrr"]
-[ext_resource type="PackedScene" uid="uid://qlr7u8b3dl1f" path="res://models/towers/cannon_tower/cannon_rotation_part_level2.glb" id="6_fyocm"]
+[ext_resource type="PackedScene" uid="uid://buxm4xwxby72c" path="res://cannon_base_level_1.tscn" id="3_fyocm"]
+[ext_resource type="PackedScene" uid="uid://bwn00vtk17ygd" path="res://cannon_base_level_2.tscn" id="4_o7kb8"]
+[ext_resource type="PackedScene" uid="uid://dxaud84abwnqd" path="res://cannon_rotation_part_level_1.tscn" id="5_rhcy7"]
+[ext_resource type="PackedScene" uid="uid://ht4wqjwpkw2m" path="res://cannon_rotation_part_level_2.tscn" id="6_j2u1f"]
 [ext_resource type="Script" uid="uid://cxk0ip4e23lw6" path="res://coin_platform.gd" id="7_j2u1f"]
 [ext_resource type="Script" uid="uid://b5y2h513lu8we" path="res://upgrade_platform.gd" id="8_vayum"]
 [ext_resource type="Script" uid="uid://wrnrlklhjykj" path="res://platform_handling_helper.gd" id="9_81hrr"]
+[ext_resource type="PackedScene" uid="uid://b8ho4ryvnnnlg" path="res://tower_platform.tscn" id="9_fyocm"]
 [ext_resource type="PackedScene" uid="uid://b78p7xe771h61" path="res://coin.tscn" id="9_wxr12"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_dnc73"]
 radius = 10.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_betor"]
-transparency = 1
-blend_mode = 3
-
-[sub_resource type="BoxMesh" id="BoxMesh_pel6m"]
-material = SubResource("StandardMaterial3D_betor")
-size = Vector3(3, 0.5, 3)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_wxr12"]
 viewport_path = NodePath("CoinPlatform/SubViewport")
@@ -49,21 +42,21 @@ level2_bullet_speed = 18.0
 
 [node name="Level1" type="Node3D" parent="Visual/BaseVisual" unique_id=12931139]
 
-[node name="cannon_base_level1" parent="Visual/BaseVisual/Level1" unique_id=1233994218 instance=ExtResource("3_pel6m")]
+[node name="cannon_base_level1" parent="Visual/BaseVisual/Level1" unique_id=1233994218 instance=ExtResource("3_fyocm")]
 
 [node name="Level2" type="Node3D" parent="Visual/BaseVisual" unique_id=550463564]
 
-[node name="cannon_base_level2" parent="Visual/BaseVisual/Level2" unique_id=1625294406 instance=ExtResource("4_wxr12")]
+[node name="cannon_base_level2" parent="Visual/BaseVisual/Level2" unique_id=1926525307 instance=ExtResource("4_o7kb8")]
 
 [node name="RotatingPart" type="Node3D" parent="Visual" unique_id=885372782]
 
 [node name="Level1" type="Node3D" parent="Visual/RotatingPart" unique_id=426986253]
 
-[node name="cannon_rotation_part_level1" parent="Visual/RotatingPart/Level1" unique_id=115521300 instance=ExtResource("5_81hrr")]
+[node name="cannon_rotation_part_level1" parent="Visual/RotatingPart/Level1" unique_id=115521300 instance=ExtResource("5_rhcy7")]
 
 [node name="Level2" type="Node3D" parent="Visual/RotatingPart" unique_id=594026791]
 
-[node name="cannon_rotation_part_level2" parent="Visual/RotatingPart/Level2" unique_id=1597294787 instance=ExtResource("6_fyocm")]
+[node name="cannon_rotation_part_level2" parent="Visual/RotatingPart/Level2" unique_id=168142238 instance=ExtResource("6_j2u1f")]
 
 [node name="Muzzle" type="Marker3D" parent="Visual/RotatingPart" unique_id=679074965]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.5, 0)
@@ -86,9 +79,8 @@ coin_scene = ExtResource("9_wxr12")
 
 [node name="Visual" type="Node3D" parent="CoinPlatform" unique_id=90151927]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CoinPlatform/Visual" unique_id=1544771586]
+[node name="tower_platform" parent="CoinPlatform/Visual" unique_id=1743115154 instance=ExtResource("9_fyocm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
-mesh = SubResource("BoxMesh_pel6m")
 
 [node name="Sprite3D" type="Sprite3D" parent="CoinPlatform/Visual" unique_id=1272510939]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.5, 0)
@@ -130,9 +122,8 @@ coin_scene = ExtResource("9_wxr12")
 
 [node name="Visual" type="Node3D" parent="UpgradePlatform" unique_id=111103205]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="UpgradePlatform/Visual" unique_id=1240252485]
+[node name="tower_platform" parent="UpgradePlatform/Visual" unique_id=415606504 instance=ExtResource("9_fyocm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
-mesh = SubResource("BoxMesh_pel6m")
 
 [node name="Sprite3D" type="Sprite3D" parent="UpgradePlatform/Visual" unique_id=1656552929]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.5, 0)

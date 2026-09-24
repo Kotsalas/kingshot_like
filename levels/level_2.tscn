@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ba5gb6yvm8igw"]
 
 [ext_resource type="Script" uid="uid://bl6b26cn38wq" path="res://player.gd" id="1_hbb88"]
-[ext_resource type="PackedScene" uid="uid://0xy7v3gc1m80" path="res://archer_bullet.tscn" id="2_wcjpl"]
+[ext_resource type="PackedScene" uid="uid://denfs4v4siq8" path="res://archer_bullet.tscn" id="2_wcjpl"]
 [ext_resource type="Script" uid="uid://bakqlkmte46gt" path="res://camera_3d.gd" id="3_5orea"]
 [ext_resource type="PackedScene" uid="uid://dqpru014264uu" path="res://player.tscn" id="3_dpc8t"]
 [ext_resource type="Script" uid="uid://8bfje5ynu5dd" path="res://joystick.gd" id="4_0ourt"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://bswquv3de4jpm" path="res://cannon_tower.tscn" id="12_wcjpl"]
 [ext_resource type="PackedScene" uid="uid://b78p7xe771h61" path="res://coin.tscn" id="13_0ourt"]
 [ext_resource type="Script" uid="uid://wrnrlklhjykj" path="res://platform_handling_helper.gd" id="14_w200a"]
+[ext_resource type="PackedScene" uid="uid://u61xg06u4n6a" path="res://build_platform.tscn" id="19_ngvhw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6r3eb"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -86,14 +87,6 @@ metadata/_custom_type_script = "uid://dbuios1nnm3y8"
 [sub_resource type="Resource" id="Resource_k2aru"]
 script = ExtResource("10_5orea")
 metadata/_custom_type_script = "uid://dbuios1nnm3y8"
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_betor"]
-transparency = 1
-blend_mode = 3
-
-[sub_resource type="BoxMesh" id="BoxMesh_5orea"]
-material = SubResource("StandardMaterial3D_betor")
-size = Vector3(4, 0.5, 4)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_0ourt"]
 viewport_path = NodePath("BuildSpot/BuildPlatform/SubViewport")
@@ -170,6 +163,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 collision_layer = 5
 script = ExtResource("6_uo0vl")
 
+[node name="base" parent="Base" unique_id=1349232079 instance=ExtResource("6_h351q")]
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Base" unique_id=1042879000]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 shape = SubResource("ConcavePolygonShape3D_ndgrd")
@@ -225,8 +220,6 @@ start_visibility = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.5, 0)
 billboard = 1
 texture = SubResource("ViewportTexture_aocai")
-
-[node name="base" parent="Base" unique_id=1349232079 instance=ExtResource("6_h351q")]
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1102337367]
 
@@ -367,9 +360,7 @@ metadata/build_cost = 10
 
 [node name="Visual" type="Node3D" parent="BuildSpot/BuildPlatform" unique_id=1622992504]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="BuildSpot/BuildPlatform/Visual" unique_id=1405728111]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
-mesh = SubResource("BoxMesh_5orea")
+[node name="build_platform" parent="BuildSpot/BuildPlatform/Visual" unique_id=949648638 instance=ExtResource("19_ngvhw")]
 
 [node name="Sprite3D" type="Sprite3D" parent="BuildSpot/BuildPlatform/Visual" unique_id=435929278]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.5, 0)
@@ -438,9 +429,7 @@ metadata/build_cost = 20
 
 [node name="Visual" type="Node3D" parent="BuildSpot2/BuildPlatform2" unique_id=799753685]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="BuildSpot2/BuildPlatform2/Visual" unique_id=1221577759]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
-mesh = SubResource("BoxMesh_5orea")
+[node name="build_platform" parent="BuildSpot2/BuildPlatform2/Visual" unique_id=132448542 instance=ExtResource("19_ngvhw")]
 
 [node name="Sprite3D" type="Sprite3D" parent="BuildSpot2/BuildPlatform2/Visual" unique_id=284766354]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.5, 0)

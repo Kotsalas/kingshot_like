@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dqpru014264uu"]
 
 [ext_resource type="PackedScene" uid="uid://buiigjxs3hfcg" path="res://models/player.glb" id="1_onrkg"]
-[ext_resource type="Shader" uid="uid://wikrajg3p2mq" path="res://toon_outline.gdshader" id="2_i3pqv"]
+[ext_resource type="Shader" uid="uid://bhec3au3iu4vr" path="res://toon_shader.gdshader" id="2_i3pqv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hqtel"]
 render_priority = 0

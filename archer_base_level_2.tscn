@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://ce6n7daqdst8o"]
+
+[ext_resource type="PackedScene" uid="uid://c146287dahtdj" path="res://models/towers/archer_tower/archer_base_level2.glb" id="1_t3aj4"]
+[ext_resource type="Shader" uid="uid://bhec3au3iu4vr" path="res://toon_shader.gdshader" id="2_6yabx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iba8o"]
+render_priority = 0
+shader = ExtResource("2_6yabx")
+shader_parameter/outline_color = Color(0.4, 0.29803923, 0.44313726, 1)
+shader_parameter/outline_width = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ch85m"]
+diffuse_mode = 3
+specular_mode = 2
+albedo_color = Color(0.85882354, 0.5019608, 0.6745098, 1)
+roughness = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6vq51"]
+render_priority = 0
+shader = ExtResource("2_6yabx")
+shader_parameter/outline_color = Color(0.4, 0.29803923, 0.44313726, 1)
+shader_parameter/outline_width = 0.0750000035625
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wbl3c"]
+diffuse_mode = 3
+specular_mode = 2
+albedo_color = Color(0.6627451, 0.3647059, 0.54509807, 1)
+roughness = 0.0
+
+[node name="archer_base_level2" unique_id=1858761996 instance=ExtResource("1_t3aj4")]
+
+[node name="Cube" parent="." index="0" unique_id=2060572139]
+material_overlay = SubResource("ShaderMaterial_iba8o")
+surface_material_override/0 = SubResource("StandardMaterial3D_ch85m")
+
+[node name="Cone" parent="." index="1" unique_id=108563312]
+material_overlay = SubResource("ShaderMaterial_6vq51")
+surface_material_override/0 = SubResource("StandardMaterial3D_wbl3c")

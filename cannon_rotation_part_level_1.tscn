@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dxaud84abwnqd"]
+
+[ext_resource type="PackedScene" uid="uid://dd1m5kuob1jfe" path="res://models/towers/cannon_tower/cannon_rotation_part_level1.glb" id="1_kxsyv"]
+[ext_resource type="Shader" uid="uid://bhec3au3iu4vr" path="res://toon_shader.gdshader" id="2_t5hqo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_luo38"]
+render_priority = 0
+shader = ExtResource("2_t5hqo")
+shader_parameter/outline_color = Color(0.16862746, 0.07058824, 0.14509805, 1)
+shader_parameter/outline_width = 0.050000002375
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rvmhi"]
+diffuse_mode = 3
+specular_mode = 2
+albedo_color = Color(0.6862745, 0.1882353, 0.23137255, 1)
+roughness = 0.0
+
+[node name="cannon_rotation_part_level1" unique_id=115521300 instance=ExtResource("1_kxsyv")]
+
+[node name="Sphere_001" parent="." index="0" unique_id=483578029]
+material_overlay = SubResource("ShaderMaterial_luo38")
+surface_material_override/0 = SubResource("StandardMaterial3D_rvmhi")

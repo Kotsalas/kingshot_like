@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://c2fgxao84ixjt"]
+
+[ext_resource type="PackedScene" uid="uid://pqy2f1osii58" path="res://models/bullets/cannon_bullet.glb" id="1_dwmfd"]
+[ext_resource type="Shader" uid="uid://bhec3au3iu4vr" path="res://toon_shader.gdshader" id="2_26j86"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xne7s"]
+render_priority = 0
+shader = ExtResource("2_26j86")
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/outline_width = 0.0070000003325
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mlige"]
+diffuse_mode = 3
+specular_mode = 2
+albedo_color = Color(0.26657522, 0.2665752, 0.2665752, 1)
+metallic = 0.57
+metallic_specular = 1.0
+roughness = 0.0
+
+[node name="cannon_bullet_visual" unique_id=39603211 instance=ExtResource("1_dwmfd")]
+
+[node name="Sphere" parent="." index="0" unique_id=666447294]
+material_overlay = SubResource("ShaderMaterial_xne7s")
+surface_material_override/0 = SubResource("StandardMaterial3D_mlige")

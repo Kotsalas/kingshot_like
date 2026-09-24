@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://u61xg06u4n6a"]
+
+[ext_resource type="PackedScene" uid="uid://ba62rq1jiv8vh" path="res://models/build_platform.glb" id="1_n7qtj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w75he"]
+render_priority = 1
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+grow = true
+grow_amount = 0.075
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
+metadata/_stencil_owned = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n7qtj"]
+next_pass = SubResource("StandardMaterial3D_w75he")
+transparency = 1
+blend_mode = 3
+diffuse_mode = 3
+specular_mode = 2
+stencil_mode = 1
+stencil_flags = 2
+stencil_outline_thickness = 0.075
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wgswy"]
+render_priority = 1
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+grow = true
+grow_amount = 0.3
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
+metadata/_stencil_owned = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gclvk"]
+next_pass = SubResource("StandardMaterial3D_wgswy")
+transparency = 1
+blend_mode = 3
+diffuse_mode = 3
+specular_mode = 2
+stencil_mode = 1
+stencil_flags = 2
+stencil_outline_thickness = 0.3
+
+[node name="build_platform" unique_id=949648638 instance=ExtResource("1_n7qtj")]
+
+[node name="Cube" parent="." index="0" unique_id=395071129]
+surface_material_override/0 = SubResource("StandardMaterial3D_n7qtj")
+
+[node name="Circle" parent="." index="1" unique_id=562071317]
+surface_material_override/0 = SubResource("StandardMaterial3D_gclvk")

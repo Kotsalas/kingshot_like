@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://d2tdirprp1hx3"]
+
+[ext_resource type="PackedScene" uid="uid://b7vwxx11481b4" path="res://models/towers/archer_tower/archer_rotation_part_level1.glb" id="1_ptp4v"]
+[ext_resource type="Shader" uid="uid://bhec3au3iu4vr" path="res://toon_shader.gdshader" id="2_7mg2c"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d5s2u"]
+render_priority = 0
+shader = ExtResource("2_7mg2c")
+shader_parameter/outline_color = Color(0.4, 0.29803923, 0.44313726, 1)
+shader_parameter/outline_width = 0.05600000266
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7mg2c"]
+diffuse_mode = 3
+specular_mode = 2
+albedo_color = Color(0.9372549, 0.7529412, 0.6901961, 1)
+roughness = 0.0
+
+[node name="archer_rotation_part_level1" unique_id=1362217254 instance=ExtResource("1_ptp4v")]
+
+[node name="Icosphere" parent="." index="0" unique_id=342001972]
+material_overlay = SubResource("ShaderMaterial_d5s2u")
+surface_material_override/0 = SubResource("StandardMaterial3D_7mg2c")

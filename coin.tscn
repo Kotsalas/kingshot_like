@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://b78p7xe771h61"]
 
 [ext_resource type="Script" uid="uid://bqivdvqck0pra" path="res://coin.gd" id="1_0t63x"]
-[ext_resource type="Shader" uid="uid://wikrajg3p2mq" path="res://toon_outline.gdshader" id="2_0t63x"]
 [ext_resource type="PackedScene" uid="uid://b4fup23femjp3" path="res://models/coin.glb" id="2_v7riw"]
+[ext_resource type="Shader" uid="uid://bhec3au3iu4vr" path="res://toon_shader.gdshader" id="3_v7riw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v7riw"]
 render_priority = 0
-shader = ExtResource("2_0t63x")
+shader = ExtResource("3_v7riw")
 shader_parameter/outline_color = Color(0, 0, 0, 1)
 shader_parameter/outline_width = 0.010000000475
 
@@ -18,7 +18,7 @@ roughness = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_w14il"]
 render_priority = 0
-shader = ExtResource("2_0t63x")
+shader = ExtResource("3_v7riw")
 shader_parameter/outline_color = Color(0, 0, 0, 1)
 shader_parameter/outline_width = 0.010000000475
 

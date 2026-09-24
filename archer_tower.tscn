@@ -1,26 +1,19 @@
 [gd_scene format=3 uid="uid://drc3dy2dxbaxi"]
 
 [ext_resource type="Script" uid="uid://ceugpwl2qgwmi" path="res://tower.gd" id="1_3u4wy"]
-[ext_resource type="PackedScene" uid="uid://0xy7v3gc1m80" path="res://archer_bullet.tscn" id="2_urwb6"]
-[ext_resource type="PackedScene" uid="uid://b16vn4tmqmep5" path="res://models/towers/archer_tower/archer_base_level1.glb" id="3_at4u2"]
-[ext_resource type="PackedScene" uid="uid://c146287dahtdj" path="res://models/towers/archer_tower/archer_base_level2.glb" id="4_3f6ns"]
-[ext_resource type="PackedScene" uid="uid://b7vwxx11481b4" path="res://models/towers/archer_tower/archer_rotation_part_level1.glb" id="5_7k8cf"]
-[ext_resource type="PackedScene" uid="uid://cojmcpld7c68y" path="res://models/towers/archer_tower/archer_rotation_part_level2.glb" id="6_ewtpq"]
+[ext_resource type="PackedScene" uid="uid://denfs4v4siq8" path="res://archer_bullet.tscn" id="2_urwb6"]
+[ext_resource type="PackedScene" uid="uid://bgfuyjapkwbqs" path="res://archer_base_level_1.tscn" id="3_3f6ns"]
+[ext_resource type="PackedScene" uid="uid://ce6n7daqdst8o" path="res://archer_base_level_2.tscn" id="4_3f6ns"]
+[ext_resource type="PackedScene" uid="uid://d2tdirprp1hx3" path="res://archer_rotation_part_level_1.tscn" id="5_7k8cf"]
+[ext_resource type="PackedScene" uid="uid://bxnbyny582g0u" path="res://archer_rotation_part_level_2.tscn" id="6_7k8cf"]
 [ext_resource type="Script" uid="uid://cxk0ip4e23lw6" path="res://coin_platform.gd" id="7_qtw07"]
 [ext_resource type="Script" uid="uid://b5y2h513lu8we" path="res://upgrade_platform.gd" id="8_f5cnk"]
+[ext_resource type="PackedScene" uid="uid://b8ho4ryvnnnlg" path="res://tower_platform.tscn" id="9_3f6ns"]
 [ext_resource type="Script" uid="uid://wrnrlklhjykj" path="res://platform_handling_helper.gd" id="9_at4u2"]
 [ext_resource type="PackedScene" uid="uid://b78p7xe771h61" path="res://coin.tscn" id="9_urwb6"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_dnc73"]
 radius = 15.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_betor"]
-transparency = 1
-blend_mode = 3
-
-[sub_resource type="BoxMesh" id="BoxMesh_3u4wy"]
-material = SubResource("StandardMaterial3D_betor")
-size = Vector3(3, 0.5, 3)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_urwb6"]
 viewport_path = NodePath("CoinPlatform/SubViewport")
@@ -43,11 +36,11 @@ level2_bullet_speed = 28.0
 
 [node name="Level1" type="Node3D" parent="Visual/BaseVisual" unique_id=12931139]
 
-[node name="archer_base_level1" parent="Visual/BaseVisual/Level1" unique_id=237303132 instance=ExtResource("3_at4u2")]
+[node name="archer_base_level1" parent="Visual/BaseVisual/Level1" unique_id=237303132 instance=ExtResource("3_3f6ns")]
 
 [node name="Level2" type="Node3D" parent="Visual/BaseVisual" unique_id=550463564]
 
-[node name="archer_base_level2" parent="Visual/BaseVisual/Level2" unique_id=64495709 instance=ExtResource("4_3f6ns")]
+[node name="archer_base_level2" parent="Visual/BaseVisual/Level2" unique_id=1858761996 instance=ExtResource("4_3f6ns")]
 
 [node name="RotatingPart" type="Node3D" parent="Visual" unique_id=885372782]
 
@@ -57,7 +50,7 @@ level2_bullet_speed = 28.0
 
 [node name="Level2" type="Node3D" parent="Visual/RotatingPart" unique_id=594026791]
 
-[node name="archer_rotation_part_level2" parent="Visual/RotatingPart/Level2" unique_id=91764373 instance=ExtResource("6_ewtpq")]
+[node name="archer_rotation_part_level2" parent="Visual/RotatingPart/Level2" unique_id=91764373 instance=ExtResource("6_7k8cf")]
 
 [node name="Muzzle" type="Marker3D" parent="Visual/RotatingPart" unique_id=679074965]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.5, 0)
@@ -79,9 +72,8 @@ coin_scene = ExtResource("9_urwb6")
 
 [node name="Visual" type="Node3D" parent="CoinPlatform" unique_id=920877654]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CoinPlatform/Visual" unique_id=534127389]
+[node name="tower_platform" parent="CoinPlatform/Visual" unique_id=1743115154 instance=ExtResource("9_3f6ns")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
-mesh = SubResource("BoxMesh_3u4wy")
 
 [node name="Sprite3D" type="Sprite3D" parent="CoinPlatform/Visual" unique_id=711286835]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.5, 0)
@@ -123,9 +115,8 @@ coin_scene = ExtResource("9_urwb6")
 
 [node name="Visual" type="Node3D" parent="UpgradePlatform" unique_id=450888321]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="UpgradePlatform/Visual" unique_id=1971750460]
+[node name="tower_platform" parent="UpgradePlatform/Visual" unique_id=605065463 instance=ExtResource("9_3f6ns")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
-mesh = SubResource("BoxMesh_3u4wy")
 
 [node name="Sprite3D" type="Sprite3D" parent="UpgradePlatform/Visual" unique_id=1630477259]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.5, 0)

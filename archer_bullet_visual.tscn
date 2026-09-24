@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://0xy7v3gc1m80"]
+
+[ext_resource type="PackedScene" uid="uid://bc0elnh1rrcxh" path="res://models/bullets/archer_bullet.glb" id="1_dax7w"]
+[ext_resource type="Shader" uid="uid://bhec3au3iu4vr" path="res://toon_shader.gdshader" id="2_malym"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w0vbf"]
+render_priority = 0
+shader = ExtResource("2_malym")
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/outline_width = 0.0050000002375
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pn0mp"]
+diffuse_mode = 3
+specular_mode = 2
+albedo_color = Color(0.34969547, 0.23943001, 0.044110015, 1)
+roughness = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t2ljh"]
+render_priority = 0
+shader = ExtResource("2_malym")
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/outline_width = 0.0050000002375
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nqnwc"]
+diffuse_mode = 3
+specular_mode = 2
+albedo_color = Color(0.50140655, 0.5014065, 0.5014065, 1)
+metallic = 0.83
+metallic_specular = 1.0
+roughness = 0.0
+
+[node name="archer_bullet_visual" unique_id=381761448 instance=ExtResource("1_dax7w")]
+
+[node name="Cylinder_001" parent="." index="0" unique_id=537766763]
+material_overlay = SubResource("ShaderMaterial_w0vbf")
+surface_material_override/0 = SubResource("StandardMaterial3D_pn0mp")
+
+[node name="Cone_001" parent="." index="1" unique_id=175036016]
+material_overlay = SubResource("ShaderMaterial_t2ljh")
+surface_material_override/0 = SubResource("StandardMaterial3D_nqnwc")

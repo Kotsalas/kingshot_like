@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://buxm4xwxby72c"]
+
+[ext_resource type="PackedScene" uid="uid://bx7mqaf5s56nw" path="res://models/towers/cannon_tower/cannon_base_level1.glb" id="1_1si84"]
+[ext_resource type="Shader" uid="uid://bhec3au3iu4vr" path="res://toon_shader.gdshader" id="2_7pgfs"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_akbtr"]
+render_priority = 0
+shader = ExtResource("2_7pgfs")
+shader_parameter/outline_color = Color(0.16862746, 0.07058824, 0.14509805, 1)
+shader_parameter/outline_width = 0.0750000035625
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_unvp4"]
+diffuse_mode = 3
+specular_mode = 2
+albedo_color = Color(0.4745098, 0.12156863, 0.22352941, 1)
+roughness = 0.0
+
+[node name="cannon_base_level1" unique_id=1233994218 instance=ExtResource("1_1si84")]
+
+[node name="Cube" parent="." index="0" unique_id=1163904901]
+material_overlay = SubResource("ShaderMaterial_akbtr")
+surface_material_override/0 = SubResource("StandardMaterial3D_unvp4")

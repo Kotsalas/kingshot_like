@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bgfuyjapkwbqs"]
+
+[ext_resource type="PackedScene" uid="uid://b16vn4tmqmep5" path="res://models/towers/archer_tower/archer_base_level1.glb" id="1_0jagd"]
+[ext_resource type="Shader" uid="uid://bhec3au3iu4vr" path="res://toon_shader.gdshader" id="2_1612i"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i5ar4"]
+render_priority = 0
+shader = ExtResource("2_1612i")
+shader_parameter/outline_color = Color(0.4, 0.29803923, 0.44313726, 1)
+shader_parameter/outline_width = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1612i"]
+diffuse_mode = 3
+specular_mode = 2
+albedo_color = Color(0.85882354, 0.5019608, 0.6745098, 1)
+roughness = 0.0
+
+[node name="archer_base_level1" unique_id=237303132 instance=ExtResource("1_0jagd")]
+
+[node name="Cube" parent="." index="0" unique_id=130850593]
+material_overlay = SubResource("ShaderMaterial_i5ar4")
+surface_material_override/0 = SubResource("StandardMaterial3D_1612i")

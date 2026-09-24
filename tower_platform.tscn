@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://b8ho4ryvnnnlg"]
+
+[ext_resource type="PackedScene" uid="uid://d2xiw0pf8tdyr" path="res://models/tower_platform.glb" id="1_jnsuk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w75he"]
+render_priority = 1
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+grow = true
+grow_amount = 0.075
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
+metadata/_stencil_owned = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7gemt"]
+next_pass = SubResource("StandardMaterial3D_w75he")
+transparency = 1
+blend_mode = 3
+diffuse_mode = 3
+specular_mode = 2
+stencil_mode = 1
+stencil_flags = 2
+stencil_outline_thickness = 0.075
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_12ax8"]
+render_priority = 1
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+grow = true
+grow_amount = 0.3
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
+metadata/_stencil_owned = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rfbmp"]
+next_pass = SubResource("StandardMaterial3D_12ax8")
+transparency = 1
+blend_mode = 3
+diffuse_mode = 3
+specular_mode = 2
+stencil_mode = 1
+stencil_flags = 2
+stencil_outline_thickness = 0.3
+
+[node name="tower_platform" unique_id=1743115154 instance=ExtResource("1_jnsuk")]
+
+[node name="Cube" parent="." index="0" unique_id=1579756301]
+surface_material_override/0 = SubResource("StandardMaterial3D_7gemt")
+
+[node name="Circle" parent="." index="1" unique_id=2043270496]
+surface_material_override/0 = SubResource("StandardMaterial3D_rfbmp")
