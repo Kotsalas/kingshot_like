@@ -1,100 +1,354 @@
 [gd_scene format=3 uid="uid://casevpm605cov"]
 
 [ext_resource type="Script" uid="uid://b50bsqlf2j7ke" path="res://level_select.gd" id="1_il3u1"]
+[ext_resource type="Texture2D" uid="uid://brnfxlovtrpif" path="res://images/level_select_background/grasslands/sky.png" id="2_bv7n5"]
 [ext_resource type="Script" uid="uid://5ofbq025xl06" path="res://button_feedback.gd" id="2_vomi7"]
+[ext_resource type="Texture2D" uid="uid://ds7rrc0oj3quj" path="res://images/level_select_background/grasslands/far_terrain.png" id="3_lmhjs"]
+[ext_resource type="Texture2D" uid="uid://b2pkjhvrorrxo" path="res://images/level_select_background/grasslands/near_terrain.png" id="4_1iyaf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wevku"]
+bg_color = Color(0.37254903, 0.68235296, 0.30588236, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.16862746, 0.12941177, 0.09411765, 1)
+corner_radius_top_left = 28
+corner_radius_top_right = 28
+corner_radius_bottom_right = 28
+corner_radius_bottom_left = 28
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bv7n5"]
+bg_color = Color(0.2901961, 0.5686275, 0.23921569, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.16862746, 0.12941177, 0.09411765, 1)
+corner_radius_top_left = 28
+corner_radius_top_right = 28
+corner_radius_bottom_right = 28
+corner_radius_bottom_left = 28
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_apu6u"]
+bg_color = Color(0.4392157, 0.7490196, 0.36862746, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.16862746, 0.12941177, 0.09411765, 1)
+corner_radius_top_left = 28
+corner_radius_top_right = 28
+corner_radius_bottom_right = 28
+corner_radius_bottom_left = 28
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lmhjs"]
+bg_color = Color(0.54901963, 0.52156866, 0.47058824, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.16862746, 0.12941177, 0.09411765, 1)
+corner_radius_top_left = 28
+corner_radius_top_right = 28
+corner_radius_bottom_right = 28
+corner_radius_bottom_left = 28
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vomi7"]
+bg_color = Color(0.9529412, 0.90588236, 0.78431374, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.16862746, 0.12941177, 0.09411765, 1)
+corner_radius_top_left = 28
+corner_radius_top_right = 28
+corner_radius_bottom_right = 28
+corner_radius_bottom_left = 28
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1iyaf"]
+bg_color = Color(0.37254903, 0.68235296, 0.30588236, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.16862746, 0.12941177, 0.09411765, 1)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1wnlg"]
+bg_color = Color(0.2901961, 0.5686275, 0.23921569, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.16862746, 0.12941177, 0.09411765, 1)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8qr5y"]
+bg_color = Color(0.4392157, 0.7490196, 0.36862746, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.16862746, 0.12941177, 0.09411765, 1)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_05pd3"]
+bg_color = Color(0.54901963, 0.52156866, 0.47058824, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.16862746, 0.12941177, 0.09411765, 1)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
 
 [node name="LevelSelect" type="Control" unique_id=2051883204]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_il3u1")
+chapter_sky_textures = Array[Texture2D]([ExtResource("2_bv7n5"), ExtResource("2_bv7n5")])
+chapter_far_textures = Array[Texture2D]([ExtResource("3_lmhjs"), ExtResource("3_lmhjs")])
+chapter_near_textures = Array[Texture2D]([ExtResource("4_1iyaf"), ExtResource("4_1iyaf")])
 
-[node name="ChapterTitle" type="Label" parent="." unique_id=2016288370]
-layout_mode = 0
-offset_left = 534.0
-offset_top = 4.0
-offset_right = 574.0
-offset_bottom = 27.0
+[node name="BackgroundRoot" type="Control" parent="." unique_id=1992561386]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
-[node name="LeftArrow" type="Button" parent="." unique_id=2014457618]
-layout_mode = 0
-offset_left = 471.0
-offset_top = 5.0
-offset_right = 494.0
-offset_bottom = 36.0
-text = "<-"
+[node name="Sky" type="TextureRect" parent="BackgroundRoot" unique_id=213299733]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 6
+
+[node name="FarTerrain" type="TextureRect" parent="BackgroundRoot" unique_id=1208938056]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_right = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.1, 1.1)
+expand_mode = 1
+stretch_mode = 6
+
+[node name="NearTerrain" type="TextureRect" parent="BackgroundRoot" unique_id=1832582761]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_right = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.1, 1.1)
+expand_mode = 1
+stretch_mode = 6
+
+[node name="SafeMargin" type="MarginContainer" parent="." unique_id=580429286]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 80
+theme_override_constants/margin_bottom = 80
+
+[node name="Center" type="CenterContainer" parent="SafeMargin" unique_id=1754133500]
+layout_mode = 2
+
+[node name="ChapterContent" type="VBoxContainer" parent="SafeMargin/Center" unique_id=1877696697]
+custom_minimum_size = Vector2(850, 0)
+layout_mode = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="ChapterHeader" type="VBoxContainer" parent="SafeMargin/Center/ChapterContent" unique_id=1732789778]
+layout_mode = 2
+alignment = 1
+
+[node name="ChapterNumber" type="Label" parent="SafeMargin/Center/ChapterContent/ChapterHeader" unique_id=1836597101]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 36
+horizontal_alignment = 1
+
+[node name="ChapterTitle" type="Label" parent="SafeMargin/Center/ChapterContent/ChapterHeader" unique_id=2016288370]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
+theme_override_constants/outline_size = 9
+theme_override_font_sizes/font_size = 62
+horizontal_alignment = 1
+
+[node name="ChapterRow" type="HBoxContainer" parent="SafeMargin/Center/ChapterContent/ChapterHeader" unique_id=1962672514]
+layout_mode = 2
+theme_override_constants/separation = 28
+alignment = 1
+
+[node name="LeftArrow" type="Button" parent="SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow" unique_id=2014457618]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 58
+theme_override_styles/normal = SubResource("StyleBoxFlat_wevku")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_bv7n5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_apu6u")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_lmhjs")
+text = "⬅"
 script = ExtResource("2_vomi7")
 
-[node name="RightArrow" type="Button" parent="." unique_id=486962108]
-layout_mode = 0
-offset_left = 625.0
-offset_top = 9.0
-offset_right = 648.0
-offset_bottom = 40.0
-text = "->"
-script = ExtResource("2_vomi7")
+[node name="MainPanel" type="PanelContainer" parent="SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow" unique_id=785108877]
+custom_minimum_size = Vector2(650, 410)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vomi7")
 
-[node name="Levels" type="Node" parent="." unique_id=1496811768]
+[node name="PanelMargin" type="MarginContainer" parent="SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow/MainPanel" unique_id=216243748]
+layout_mode = 2
+theme_override_constants/margin_left = 45
+theme_override_constants/margin_top = 45
+theme_override_constants/margin_right = 45
+theme_override_constants/margin_bottom = 45
 
-[node name="Level1Button" type="Button" parent="Levels" unique_id=531494330]
-offset_left = 132.0
-offset_top = 34.0
-offset_right = 199.0
-offset_bottom = 65.0
+[node name="LevelRows" type="VBoxContainer" parent="SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow/MainPanel/PanelMargin" unique_id=24173437]
+layout_mode = 2
+theme_override_constants/separation = 28
+alignment = 1
+
+[node name="Row1" type="HBoxContainer" parent="SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow/MainPanel/PanelMargin/LevelRows" unique_id=793487340]
+layout_mode = 2
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="Level1Button" type="Button" parent="SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow/MainPanel/PanelMargin/LevelRows/Row1" unique_id=531494330]
+custom_minimum_size = Vector2(160, 115)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 46
+theme_override_styles/normal = SubResource("StyleBoxFlat_1iyaf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1wnlg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8qr5y")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_05pd3")
 text = "LEVEL 1"
 script = ExtResource("2_vomi7")
 
-[node name="Level2Button" type="Button" parent="Levels" unique_id=797857862]
-offset_left = 134.0
-offset_top = 82.0
-offset_right = 201.0
-offset_bottom = 113.0
-text = "LEVEL 2"
+[node name="Level2Button" type="Button" parent="SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow/MainPanel/PanelMargin/LevelRows/Row1" unique_id=1615011096]
+custom_minimum_size = Vector2(160, 115)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 46
+theme_override_styles/normal = SubResource("StyleBoxFlat_1iyaf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1wnlg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8qr5y")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_05pd3")
+text = "LEVEL 1"
 script = ExtResource("2_vomi7")
 
-[node name="Level3Button" type="Button" parent="Levels" unique_id=1467932739]
-offset_left = 137.0
-offset_top = 127.0
-offset_right = 204.0
-offset_bottom = 158.0
-text = "LEVEL 3"
+[node name="Level3Button" type="Button" parent="SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow/MainPanel/PanelMargin/LevelRows/Row1" unique_id=1317339452]
+custom_minimum_size = Vector2(160, 115)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 46
+theme_override_styles/normal = SubResource("StyleBoxFlat_1iyaf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1wnlg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8qr5y")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_05pd3")
+text = "LEVEL 1"
 script = ExtResource("2_vomi7")
 
-[node name="Level4Button" type="Button" parent="Levels" unique_id=1680088475]
-offset_left = 139.0
-offset_top = 170.0
-offset_right = 206.0
-offset_bottom = 201.0
-text = "LEVEL 4"
+[node name="Row2" type="HBoxContainer" parent="SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow/MainPanel/PanelMargin/LevelRows" unique_id=823258435]
+layout_mode = 2
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="Level4Button" type="Button" parent="SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow/MainPanel/PanelMargin/LevelRows/Row2" unique_id=1167770493]
+custom_minimum_size = Vector2(160, 115)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 46
+theme_override_styles/normal = SubResource("StyleBoxFlat_1iyaf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1wnlg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8qr5y")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_05pd3")
+text = "LEVEL 1"
 script = ExtResource("2_vomi7")
 
-[node name="Level5Button" type="Button" parent="Levels" unique_id=440084363]
-offset_left = 141.0
-offset_top = 221.0
-offset_right = 208.0
-offset_bottom = 252.0
-text = "LEVEL 5"
+[node name="Level5Button" type="Button" parent="SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow/MainPanel/PanelMargin/LevelRows/Row2" unique_id=1306407797]
+custom_minimum_size = Vector2(160, 115)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 46
+theme_override_styles/normal = SubResource("StyleBoxFlat_1iyaf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1wnlg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8qr5y")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_05pd3")
+text = "LEVEL 1"
 script = ExtResource("2_vomi7")
 
-[connection signal="button_down" from="LeftArrow" to="LeftArrow" method="_on_button_down"]
-[connection signal="button_up" from="LeftArrow" to="." method="_on_left_arrow_button_up"]
-[connection signal="button_up" from="LeftArrow" to="LeftArrow" method="_on_button_up"]
-[connection signal="button_down" from="RightArrow" to="RightArrow" method="_on_button_down"]
-[connection signal="button_up" from="RightArrow" to="." method="_on_right_arrow_button_up"]
-[connection signal="button_up" from="RightArrow" to="RightArrow" method="_on_button_up"]
-[connection signal="button_down" from="Levels/Level1Button" to="Levels/Level1Button" method="_on_button_down"]
-[connection signal="button_up" from="Levels/Level1Button" to="." method="_on_level_1_button_button_up"]
-[connection signal="button_up" from="Levels/Level1Button" to="Levels/Level1Button" method="_on_button_up"]
-[connection signal="button_down" from="Levels/Level2Button" to="Levels/Level2Button" method="_on_button_down"]
-[connection signal="button_up" from="Levels/Level2Button" to="." method="_on_level_2_button_button_up"]
-[connection signal="button_up" from="Levels/Level2Button" to="Levels/Level2Button" method="_on_button_up"]
-[connection signal="button_down" from="Levels/Level3Button" to="Levels/Level3Button" method="_on_button_down"]
-[connection signal="button_up" from="Levels/Level3Button" to="." method="_on_level_3_button_button_up"]
-[connection signal="button_up" from="Levels/Level3Button" to="Levels/Level3Button" method="_on_button_up"]
-[connection signal="button_down" from="Levels/Level4Button" to="Levels/Level4Button" method="_on_button_down"]
-[connection signal="button_up" from="Levels/Level4Button" to="." method="_on_level_4_button_button_up"]
-[connection signal="button_up" from="Levels/Level4Button" to="Levels/Level4Button" method="_on_button_up"]
-[connection signal="button_down" from="Levels/Level5Button" to="Levels/Level5Button" method="_on_button_down"]
-[connection signal="button_up" from="Levels/Level5Button" to="." method="_on_level_5_button_button_up"]
-[connection signal="button_up" from="Levels/Level5Button" to="Levels/Level5Button" method="_on_button_up"]
+[node name="RightArrow" type="Button" parent="SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow" unique_id=2121343043]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 58
+theme_override_styles/normal = SubResource("StyleBoxFlat_wevku")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_bv7n5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_apu6u")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_lmhjs")
+text = "➡"
+script = ExtResource("2_vomi7")
+
+[connection signal="button_down" from="SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow/LeftArrow" to="SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow/LeftArrow" method="_on_button_down"]
+[connection signal="button_up" from="SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow/LeftArrow" to="." method="_on_left_arrow_button_up"]
+[connection signal="button_up" from="SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow/LeftArrow" to="SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow/LeftArrow" method="_on_button_up"]
+[connection signal="button_down" from="SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow/MainPanel/PanelMargin/LevelRows/Row1/Level1Button" to="SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow/MainPanel/PanelMargin/LevelRows/Row1/Level1Button" method="_on_button_down"]
+[connection signal="button_up" from="SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow/MainPanel/PanelMargin/LevelRows/Row1/Level1Button" to="." method="_on_level_1_button_button_up"]
+[connection signal="button_up" from="SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow/MainPanel/PanelMargin/LevelRows/Row1/Level1Button" to="SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow/MainPanel/PanelMargin/LevelRows/Row1/Level1Button" method="_on_button_up"]
+[connection signal="button_down" from="SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow/MainPanel/PanelMargin/LevelRows/Row1/Level2Button" to="SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow/MainPanel/PanelMargin/LevelRows/Row1/Level2Button" method="_on_button_down"]
+[connection signal="button_up" from="SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow/MainPanel/PanelMargin/LevelRows/Row1/Level2Button" to="." method="_on_level_2_button_button_up"]
+[connection signal="button_up" from="SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow/MainPanel/PanelMargin/LevelRows/Row1/Level2Button" to="SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow/MainPanel/PanelMargin/LevelRows/Row1/Level2Button" method="_on_button_up"]
+[connection signal="button_down" from="SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow/MainPanel/PanelMargin/LevelRows/Row1/Level3Button" to="SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow/MainPanel/PanelMargin/LevelRows/Row1/Level3Button" method="_on_button_down"]
+[connection signal="button_up" from="SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow/MainPanel/PanelMargin/LevelRows/Row1/Level3Button" to="." method="_on_level_3_button_button_up"]
+[connection signal="button_up" from="SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow/MainPanel/PanelMargin/LevelRows/Row1/Level3Button" to="SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow/MainPanel/PanelMargin/LevelRows/Row1/Level3Button" method="_on_button_up"]
+[connection signal="button_down" from="SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow/MainPanel/PanelMargin/LevelRows/Row2/Level4Button" to="SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow/MainPanel/PanelMargin/LevelRows/Row2/Level4Button" method="_on_button_down"]
+[connection signal="button_up" from="SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow/MainPanel/PanelMargin/LevelRows/Row2/Level4Button" to="SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow/MainPanel/PanelMargin/LevelRows/Row2/Level4Button" method="_on_button_up"]
+[connection signal="button_down" from="SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow/MainPanel/PanelMargin/LevelRows/Row2/Level5Button" to="SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow/MainPanel/PanelMargin/LevelRows/Row2/Level5Button" method="_on_button_down"]
+[connection signal="button_up" from="SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow/MainPanel/PanelMargin/LevelRows/Row2/Level5Button" to="SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow/MainPanel/PanelMargin/LevelRows/Row2/Level5Button" method="_on_button_up"]
+[connection signal="button_down" from="SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow/RightArrow" to="SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow/RightArrow" method="_on_button_down"]
+[connection signal="button_up" from="SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow/RightArrow" to="." method="_on_right_arrow_button_up"]
+[connection signal="button_up" from="SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow/RightArrow" to="SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow/RightArrow" method="_on_button_up"]

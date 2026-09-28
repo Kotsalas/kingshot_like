@@ -4,11 +4,22 @@ extends CharacterBody3D
 @export var push_strength := 1.0
 @export var push_distance := 0.5
 
+@onready var coin_counter = $"../UI/CoinCounter"
+@onready var coin_label = $"../UI/CoinCounter/MarginContainer/HBoxContainer/CoinLabel"
+
+var coin_tween: Tween
+var coin_counter_scale := Vector2.ONE
+
 const SPEED = 10.0
 const GRAVITY = 9.8
 
 var targets: Array[Node3D] = []
 var coins := 100
+
+func _ready() -> void:
+	await get_tree().process_frame
+	coin_counter.pivot_offset = coin_counter.size / 2.0
+	coin_counter_scale = coin_counter.scale
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -70,4 +81,29 @@ func add_coins(amount: int):
 	update_coin_ui()
 
 func update_coin_ui():
-	$"../UI/CoinLabel".text = str(coins)
+	coin_label.text = str(coins)
+	play_coin_pop()
+
+func play_coin_pop():
+	if coin_tween and coin_tween.is_valid():
+		coin_tween.kill()
+		
+	coin_counter.scale = coin_counter_scale
+	
+	coin_tween = create_tween()
+	coin_tween.set_trans(Tween.TRANS_BACK)
+	coin_tween.set_ease(Tween.EASE_OUT)
+	
+	coin_tween.tween_property(
+		coin_counter,
+		"scale",
+		coin_counter_scale * 1.05,
+		0.07
+	)
+	
+	coin_tween.tween_property(
+		coin_counter,
+		"scale",
+		coin_counter_scale,
+		0.11
+	)

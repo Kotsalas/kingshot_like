@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://drc3dy2dxbaxi" path="res://archer_tower.tscn" id="11_ngvhw"]
 [ext_resource type="Script" uid="uid://dcw8hh4q4vmqc" path="res://level_manager.gd" id="12_itbe0"]
 [ext_resource type="PackedScene" uid="uid://bswquv3de4jpm" path="res://cannon_tower.tscn" id="12_wcjpl"]
+[ext_resource type="Texture2D" uid="uid://c8nhqaf5n4u22" path="res://images/coin_icon.png" id="12_xrja0"]
 [ext_resource type="PackedScene" uid="uid://b78p7xe771h61" path="res://coin.tscn" id="13_0ourt"]
 [ext_resource type="Script" uid="uid://wrnrlklhjykj" path="res://platform_handling_helper.gd" id="14_w200a"]
 [ext_resource type="PackedScene" uid="uid://u61xg06u4n6a" path="res://build_platform.tscn" id="19_ngvhw"]
@@ -28,12 +29,12 @@ sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 energy_multiplier = 1.5
 
-[sub_resource type="Sky" id="Sky_tereu"]
+[sub_resource type="Sky" id="Sky_ngvhw"]
 sky_material = SubResource("ProceduralSkyMaterial_6r3eb")
 
 [sub_resource type="Environment" id="Environment_2pufk"]
 background_mode = 2
-sky = SubResource("Sky_tereu")
+sky = SubResource("Sky_ngvhw")
 tonemap_mode = 2
 glow_enabled = true
 
@@ -72,6 +73,18 @@ shader = ExtResource("5_w200a")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5orea"]
 shader = ExtResource("5_w200a")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_he6wg"]
+bg_color = Color(0.9529412, 0.90588236, 0.78431374, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.16862746, 0.12941177, 0.09411765, 1)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
 
 [sub_resource type="Curve3D" id="Curve3D_xwl8u"]
 _data = {
@@ -157,6 +170,11 @@ transform = Transform3D(0.70710677, -0.5416752, 0.45451948, 0, 0.64278764, 0.766
 fov = 60.0
 script = ExtResource("3_5orea")
 target = NodePath("../Player")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1175233776]
+transform = Transform3D(0.9848077, 0.044943452, -0.16773126, 0, 0.96592575, 0.25881904, 0.17364818, -0.25488696, 0.9512512, 0, 0, 0)
+shadow_enabled = true
+shadow_blur = 0.0
 
 [node name="Base" type="StaticBody3D" parent="." unique_id=241141315]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -310,21 +328,46 @@ mouse_filter = 2
 color = Color(0, 0, 0, 1)
 metadata/_edit_use_anchors_ = true
 
-[node name="CoinLabel" type="Label" parent="UI" unique_id=1066355972]
+[node name="CoinCounter" type="PanelContainer" parent="UI" unique_id=1228425788]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -65.0
-offset_top = 25.0
-offset_right = -25.0
-offset_bottom = 48.0
+offset_left = -135.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = 101.0
 grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_he6wg")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/CoinCounter" unique_id=1680401735]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/CoinCounter/MarginContainer" unique_id=822781324]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="CoinIcon" type="TextureRect" parent="UI/CoinCounter/MarginContainer/HBoxContainer" unique_id=582963856]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("12_xrja0")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CoinLabel" type="Label" parent="UI/CoinCounter/MarginContainer/HBoxContainer" unique_id=354764968]
+layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
+theme_override_colors/font_outline_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
 theme_override_constants/outline_size = 16
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 40
 text = "0"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="EnemyPath" type="Path3D" parent="." unique_id=770286216]
 curve = SubResource("Curve3D_xwl8u")
@@ -466,11 +509,6 @@ visual = NodePath("../Visual")
 [node name="LevelManager" type="Node" parent="." unique_id=1468262866]
 script = ExtResource("12_itbe0")
 level_number = 2
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1175233776]
-transform = Transform3D(0.9848077, 0.044943452, -0.16773126, 0, 0.96592575, 0.25881904, 0.17364818, -0.25488696, 0.9512512, 0, 0, 0)
-shadow_enabled = true
-shadow_blur = 0.0
 
 [connection signal="timeout" from="Player/ShootTimer" to="Player" method="_on_shoot_timer_timeout"]
 [connection signal="body_entered" from="Player/DetectionArea" to="Player" method="_on_detection_area_body_entered"]

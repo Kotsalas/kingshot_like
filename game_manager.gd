@@ -46,9 +46,10 @@ func complete_level(level_number: int):
 		highest_unlocked_level = level_number + 1
 		save_progress()
 
-func load_level(level_number: int):
-	current_level = level_number
+func load_chapter_level(button_index: int, current_chapter: int, LEVELS_PER_CHAPTER: int):
+	var first_level = ((current_chapter - 1) * LEVELS_PER_CHAPTER) + 1
+	current_level = first_level + button_index
 	
 	SceneTransition.transition_to(
-		"res://levels/level_" + str(level_number) + ".tscn"
+		"res://levels/level_" + str(current_level) + ".tscn"
 	)
