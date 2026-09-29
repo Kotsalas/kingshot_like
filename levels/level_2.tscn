@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://dqpru014264uu" path="res://player.tscn" id="3_dpc8t"]
 [ext_resource type="Script" uid="uid://8bfje5ynu5dd" path="res://joystick.gd" id="4_0ourt"]
 [ext_resource type="Script" uid="uid://d3p26oycb0pdf" path="res://health_bar_helper.gd" id="5_uo0vl"]
-[ext_resource type="Shader" uid="uid://c7y7752ib56cs" path="res://circle_shader.gdshader" id="5_w200a"]
 [ext_resource type="PackedScene" uid="uid://crohgg75acgqi" path="res://base_toon.tscn" id="6_h351q"]
 [ext_resource type="Script" uid="uid://b45feecbavmmb" path="res://base.gd" id="6_uo0vl"]
 [ext_resource type="Script" uid="uid://b1xytupb5hr8m" path="res://enemy_spawner.gd" id="7_k2aru"]
@@ -17,6 +16,8 @@
 [ext_resource type="Script" uid="uid://dbuios1nnm3y8" path="res://wave_data.gd" id="10_5orea"]
 [ext_resource type="Script" uid="uid://c4ituae83amoq" path="res://build_platform.gd" id="10_dpc8t"]
 [ext_resource type="PackedScene" uid="uid://drc3dy2dxbaxi" path="res://archer_tower.tscn" id="11_ngvhw"]
+[ext_resource type="Texture2D" uid="uid://d24i6afan5p8i" path="res://images/joystick_circle_2.png" id="11_xrja0"]
+[ext_resource type="Texture2D" uid="uid://bk0gn87vrmohi" path="res://images/joystick_circle.png" id="12_he6wg"]
 [ext_resource type="Script" uid="uid://dcw8hh4q4vmqc" path="res://level_manager.gd" id="12_itbe0"]
 [ext_resource type="PackedScene" uid="uid://bswquv3de4jpm" path="res://cannon_tower.tscn" id="12_wcjpl"]
 [ext_resource type="Texture2D" uid="uid://c8nhqaf5n4u22" path="res://images/coin_icon.png" id="12_xrja0"]
@@ -68,11 +69,22 @@ corner_radius_bottom_left = 6
 [sub_resource type="ViewportTexture" id="ViewportTexture_aocai"]
 viewport_path = NodePath("Base/HealthBarViewport")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wcjpl"]
-shader = ExtResource("5_w200a")
+[sub_resource type="Shader" id="Shader_kyq6o"]
+code = "shader_type canvas_item;
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5orea"]
-shader = ExtResource("5_w200a")
+void fragment() {
+    // Calculate distance from center (UV coordinates go from 0.0 to 1.0)
+    float dist = distance(UV, vec2(0.5));
+    
+    // Smooth anti-aliased edge around the circle border (radius = 0.5)
+    float alpha = 1.0 - smoothstep(0.48, 0.5, dist);
+    
+    // Apply smooth transparency outside the radius
+    COLOR.a *= alpha;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jqt73"]
+shader = SubResource("Shader_kyq6o")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_he6wg"]
 bg_color = Color(0.9529412, 0.90588236, 0.78431374, 1)
@@ -300,32 +312,37 @@ script = ExtResource("8_h351q")
 
 [node name="Joystick" type="Control" parent="UI" unique_id=71538661]
 layout_mode = 3
-anchors_preset = 2
-anchor_top = 1.0
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -150.0
-offset_right = 150.0
-grow_vertical = 0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("4_0ourt")
 metadata/_edit_use_anchors_ = true
 
-[node name="Base" type="ColorRect" parent="UI/Joystick" unique_id=1618313343]
-material = SubResource("ShaderMaterial_wcjpl")
+[node name="Base" type="TextureRect" parent="UI/Joystick" unique_id=317421266]
+self_modulate = Color(1, 1, 1, 0.49803922)
+material = SubResource("ShaderMaterial_jqt73")
 layout_mode = 0
 offset_right = 150.0
 offset_bottom = 150.0
 mouse_filter = 2
+texture = ExtResource("11_xrja0")
+expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Knob" type="ColorRect" parent="UI/Joystick" unique_id=1137017837]
-material = SubResource("ShaderMaterial_5orea")
+[node name="Knob" type="TextureRect" parent="UI/Joystick" unique_id=842368082]
+self_modulate = Color(1, 1, 1, 0.49803922)
 layout_mode = 0
 offset_left = 45.0
 offset_top = 45.0
 offset_right = 105.0
 offset_bottom = 105.0
 mouse_filter = 2
-color = Color(0, 0, 0, 1)
+texture = ExtResource("12_he6wg")
+expand_mode = 1
+stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
 [node name="CoinCounter" type="PanelContainer" parent="UI" unique_id=1228425788]
