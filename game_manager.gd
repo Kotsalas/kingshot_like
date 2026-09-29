@@ -53,3 +53,10 @@ func load_chapter_level(button_index: int, current_chapter: int, LEVELS_PER_CHAP
 	SceneTransition.transition_to(
 		"res://levels/level_" + str(current_level) + ".tscn"
 	)
+
+func load_level(level_number: int):
+	current_level = level_number
+	
+	SceneTransition.transition_to(
+		"res://levels/level_" + str(current_level) + ".tscn"
+	)

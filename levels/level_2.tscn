@@ -10,7 +10,6 @@
 [ext_resource type="Script" uid="uid://b45feecbavmmb" path="res://base.gd" id="6_uo0vl"]
 [ext_resource type="Script" uid="uid://b1xytupb5hr8m" path="res://enemy_spawner.gd" id="7_k2aru"]
 [ext_resource type="Script" uid="uid://do4arf7doqlnk" path="res://levels/result_overlay.gd" id="7_ndgrd"]
-[ext_resource type="Script" uid="uid://5ofbq025xl06" path="res://button_feedback.gd" id="8_h351q"]
 [ext_resource type="PackedScene" uid="uid://dk75hb6nsdudh" path="res://normal_enemy.tscn" id="8_ndgrd"]
 [ext_resource type="PackedScene" uid="uid://c0mvjbk5klgn6" path="res://tank_enemy.tscn" id="9_h351q"]
 [ext_resource type="Script" uid="uid://dbuios1nnm3y8" path="res://wave_data.gd" id="10_5orea"]
@@ -68,6 +67,126 @@ corner_radius_bottom_left = 6
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_aocai"]
 viewport_path = NodePath("Base/HealthBarViewport")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_itbe0"]
+bg_color = Color(0.9529412, 0.90588236, 0.78431374, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.16862746, 0.12941177, 0.09411765, 1)
+corner_radius_top_left = 28
+corner_radius_top_right = 28
+corner_radius_bottom_right = 28
+corner_radius_bottom_left = 28
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xrja0"]
+bg_color = Color(0.9098039, 0.72156864, 0.2901961, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.16862746, 0.12941177, 0.09411765, 1)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jqt73"]
+bg_color = Color(0.86478764, 0.67831403, 0.24040487, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.16862746, 0.12941177, 0.09411765, 1)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_00pa0"]
+bg_color = Color(0.9458317, 0.7651605, 0.36523312, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.16862746, 0.12941177, 0.09411765, 1)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_amxoe"]
+bg_color = Color(0.37254903, 0.68235296, 0.30588236, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.16862746, 0.12941177, 0.09411765, 1)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cp3aq"]
+bg_color = Color(0.33549628, 0.61708885, 0.274933, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.16862746, 0.12941177, 0.09411765, 1)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wgvos"]
+bg_color = Color(0.40579128, 0.7412615, 0.33356366, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.16862746, 0.12941177, 0.09411765, 1)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m4706"]
+bg_color = Color(0.54901963, 0.52156866, 0.47058824, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.16862746, 0.12941177, 0.09411765, 1)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4xp61"]
+bg_color = Color(0.48976916, 0.46354562, 0.4148345, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.16862746, 0.12941177, 0.09411765, 1)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4yoxl"]
+bg_color = Color(0.594078, 0.5662346, 0.51453465, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.16862746, 0.12941177, 0.09411765, 1)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
 
 [sub_resource type="Shader" id="Shader_kyq6o"]
 code = "shader_type canvas_item;
@@ -253,7 +372,7 @@ texture = SubResource("ViewportTexture_aocai")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1102337367]
 
-[node name="ResultOverlay" type="Control" parent="UI" unique_id=699045080]
+[node name="ResultOverlay" type="Control" parent="UI" unique_id=465486854]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -263,7 +382,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("7_ndgrd")
 
-[node name="DimBackground" type="ColorRect" parent="UI/ResultOverlay" unique_id=1355919627]
+[node name="DimBackground" type="ColorRect" parent="UI/ResultOverlay" unique_id=1595195144]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -272,7 +391,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.49803922)
 
-[node name="ResultPanel" type="PanelContainer" parent="UI/ResultOverlay" unique_id=200196601]
+[node name="ResultPanel" type="PanelContainer" parent="UI/ResultOverlay" unique_id=1230447854]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -285,30 +404,52 @@ offset_right = 299.0
 offset_bottom = 201.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_itbe0")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/ResultOverlay/ResultPanel" unique_id=47278263]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/ResultOverlay/ResultPanel" unique_id=1874459060]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 34
 alignment = 1
 
-[node name="ResultTitle" type="Label" parent="UI/ResultOverlay/ResultPanel/VBoxContainer" unique_id=1694699098]
+[node name="ResultTitle" type="Label" parent="UI/ResultOverlay/ResultPanel/VBoxContainer" unique_id=51622642]
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 48
 
-[node name="NextButton" type="Button" parent="UI/ResultOverlay/ResultPanel/VBoxContainer" unique_id=489670277]
+[node name="NextButton" type="Button" parent="UI/ResultOverlay/ResultPanel/VBoxContainer" unique_id=124037486]
+custom_minimum_size = Vector2(220, 64)
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_xrja0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jqt73")
+theme_override_styles/hover = SubResource("StyleBoxFlat_00pa0")
 text = "NEXT LEVEL"
-script = ExtResource("8_h351q")
 
-[node name="RestartButton" type="Button" parent="UI/ResultOverlay/ResultPanel/VBoxContainer" unique_id=875622800]
+[node name="RestartButton" type="Button" parent="UI/ResultOverlay/ResultPanel/VBoxContainer" unique_id=419858051]
+custom_minimum_size = Vector2(220, 64)
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_amxoe")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cp3aq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wgvos")
 text = "RESTART LEVEL"
-script = ExtResource("8_h351q")
 
-[node name="LevelsButton" type="Button" parent="UI/ResultOverlay/ResultPanel/VBoxContainer" unique_id=643840157]
+[node name="LevelsButton" type="Button" parent="UI/ResultOverlay/ResultPanel/VBoxContainer" unique_id=1274207866]
+custom_minimum_size = Vector2(220, 64)
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_m4706")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4xp61")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4yoxl")
 text = "BACK TO MENU"
-script = ExtResource("8_h351q")
 
 [node name="Joystick" type="Control" parent="UI" unique_id=71538661]
 layout_mode = 3
@@ -531,14 +672,8 @@ level_number = 2
 [connection signal="body_entered" from="Player/DetectionArea" to="Player" method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="Player/DetectionArea" to="Player" method="_on_detection_area_body_exited"]
 [connection signal="destroyed" from="Base" to="LevelManager" method="_on_base_destroyed"]
-[connection signal="button_down" from="UI/ResultOverlay/ResultPanel/VBoxContainer/NextButton" to="UI/ResultOverlay/ResultPanel/VBoxContainer/NextButton" method="_on_button_down"]
-[connection signal="button_up" from="UI/ResultOverlay/ResultPanel/VBoxContainer/NextButton" to="UI/ResultOverlay/ResultPanel/VBoxContainer/NextButton" method="_on_button_up"]
 [connection signal="pressed" from="UI/ResultOverlay/ResultPanel/VBoxContainer/NextButton" to="LevelManager" method="_on_next_button_pressed"]
-[connection signal="button_down" from="UI/ResultOverlay/ResultPanel/VBoxContainer/RestartButton" to="UI/ResultOverlay/ResultPanel/VBoxContainer/RestartButton" method="_on_button_down"]
-[connection signal="button_up" from="UI/ResultOverlay/ResultPanel/VBoxContainer/RestartButton" to="UI/ResultOverlay/ResultPanel/VBoxContainer/RestartButton" method="_on_button_up"]
 [connection signal="pressed" from="UI/ResultOverlay/ResultPanel/VBoxContainer/RestartButton" to="LevelManager" method="_on_restart_button_pressed"]
-[connection signal="button_down" from="UI/ResultOverlay/ResultPanel/VBoxContainer/LevelsButton" to="UI/ResultOverlay/ResultPanel/VBoxContainer/LevelsButton" method="_on_button_down"]
-[connection signal="button_up" from="UI/ResultOverlay/ResultPanel/VBoxContainer/LevelsButton" to="UI/ResultOverlay/ResultPanel/VBoxContainer/LevelsButton" method="_on_button_up"]
 [connection signal="pressed" from="UI/ResultOverlay/ResultPanel/VBoxContainer/LevelsButton" to="LevelManager" method="_on_levels_button_pressed"]
 [connection signal="all_waves_spawned" from="EnemySpawner" to="LevelManager" method="_on_enemy_spawner_all_waves_spawned"]
 [connection signal="timeout" from="EnemySpawner/SpawnTimer" to="EnemySpawner" method="_on_spawn_timer_timeout"]
