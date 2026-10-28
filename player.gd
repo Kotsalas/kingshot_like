@@ -14,7 +14,7 @@ const SPEED = 10.0
 const GRAVITY = 9.8
 
 var targets: Array[Node3D] = []
-var coins := 100
+var coins := 0
 
 func _ready() -> void:
 	await get_tree().process_frame
