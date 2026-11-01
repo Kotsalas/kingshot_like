@@ -14,6 +14,7 @@ extends Control
 @onready var level_button_3: Button = $SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow/MainPanel/PanelMargin/LevelRows/Row1/Level3Button
 @onready var level_button_4: Button = $SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow/MainPanel/PanelMargin/LevelRows/Row2/Level4Button
 @onready var level_button_5: Button = $SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow/MainPanel/PanelMargin/LevelRows/Row2/Level5Button
+@onready var level_button_6: Button = $SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow/MainPanel/PanelMargin/LevelRows/Row2/Level6Button
 @onready var chapter_content: VBoxContainer = $SafeMargin/Center/ChapterContent
 
 const AVAILABLE_COLOR := Color("#5FAE4E")
@@ -21,7 +22,7 @@ const HIGHLIGHT_COLOR := Color("#E8B84A")
 const LOCKED_COLOR := Color("#8C8578")
 const BORDER_COLOR := Color("#2B2118")
 
-var LEVELS_PER_CHAPTER := 5
+var LEVELS_PER_CHAPTER := 6
 
 var current_chapter := 1
 var total_chapters := 3
@@ -66,7 +67,8 @@ func update_level_buttons():
 		level_button_2,
 		level_button_3,
 		level_button_4,
-		level_button_5
+		level_button_5,
+		level_button_6
 	]
 	
 	for i in range(buttons.size()):
@@ -163,6 +165,9 @@ func _on_level_4_button_button_up() -> void:
 
 func _on_level_5_button_button_up() -> void:
 	GameManager.load_chapter_level(4, current_chapter, LEVELS_PER_CHAPTER)
+
+func _on_level_6_button_button_up() -> void:
+	GameManager.load_chapter_level(5, current_chapter, LEVELS_PER_CHAPTER)
 
 func animate_chapter_change(direction: int):
 	if chapter_animating:

@@ -420,7 +420,7 @@ shadow_enabled = true
 shadow_blur = 0.0
 
 [node name="Base" type="StaticBody3D" parent="." unique_id=241141315]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.24, 0)
 collision_layer = 5
 script = ExtResource("6_uo0vl")
 

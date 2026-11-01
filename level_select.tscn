@@ -320,6 +320,19 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_05pd3")
 text = "LEVEL 1"
 script = ExtResource("2_vomi7")
 
+[node name="Level6Button" type="Button" parent="SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow/MainPanel/PanelMargin/LevelRows/Row2" unique_id=279316196]
+custom_minimum_size = Vector2(160, 115)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 46
+theme_override_styles/normal = SubResource("StyleBoxFlat_1iyaf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1wnlg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8qr5y")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_05pd3")
+text = "LEVEL 1"
+script = ExtResource("2_vomi7")
+
 [node name="RightArrow" type="Button" parent="SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow" unique_id=2121343043]
 custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
@@ -351,6 +364,9 @@ script = ExtResource("2_vomi7")
 [connection signal="button_down" from="SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow/MainPanel/PanelMargin/LevelRows/Row2/Level5Button" to="SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow/MainPanel/PanelMargin/LevelRows/Row2/Level5Button" method="_on_button_down"]
 [connection signal="button_up" from="SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow/MainPanel/PanelMargin/LevelRows/Row2/Level5Button" to="." method="_on_level_5_button_button_up"]
 [connection signal="button_up" from="SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow/MainPanel/PanelMargin/LevelRows/Row2/Level5Button" to="SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow/MainPanel/PanelMargin/LevelRows/Row2/Level5Button" method="_on_button_up"]
+[connection signal="button_down" from="SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow/MainPanel/PanelMargin/LevelRows/Row2/Level6Button" to="SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow/MainPanel/PanelMargin/LevelRows/Row2/Level6Button" method="_on_button_down"]
+[connection signal="button_up" from="SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow/MainPanel/PanelMargin/LevelRows/Row2/Level6Button" to="." method="_on_level_6_button_button_up"]
+[connection signal="button_up" from="SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow/MainPanel/PanelMargin/LevelRows/Row2/Level6Button" to="SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow/MainPanel/PanelMargin/LevelRows/Row2/Level6Button" method="_on_button_up"]
 [connection signal="button_down" from="SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow/RightArrow" to="SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow/RightArrow" method="_on_button_down"]
 [connection signal="button_up" from="SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow/RightArrow" to="." method="_on_right_arrow_button_up"]
 [connection signal="button_up" from="SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow/RightArrow" to="SafeMargin/Center/ChapterContent/ChapterHeader/ChapterRow/RightArrow" method="_on_button_up"]
