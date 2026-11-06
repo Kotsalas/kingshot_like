@@ -17,6 +17,8 @@ var normal_spawned := 0
 var tank_spawned := 0
 
 func _ready():
+	add_to_group("enemy_spawners")
+
 	if waves.is_empty():
 		return
 	
@@ -41,6 +43,13 @@ func spawn_enemy():
 	
 	var enemy = enemy_scene_to_spawn.instantiate()
 	path_follow.add_child(enemy)
+	enemies_spawned += 1
+
+func get_total_enemy_count() -> int:
+	var total := 0
+	for wave: WaveData in waves:
+		total += wave.total_enemies()
+	return total
 
 func _on_wave_timer_timeout() -> void:
 	current_wave += 1

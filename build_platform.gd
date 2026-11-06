@@ -57,8 +57,6 @@ func _on_build_timer_timeout():
 		coin.on_arrival = Callable(self, "add_coins")
 		
 		coin.setup_start_position()
-	else:
-		$BuildTimer.stop()
 
 func build_tower():
 	var tower = tower_scene.instantiate()

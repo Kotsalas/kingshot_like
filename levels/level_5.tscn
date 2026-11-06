@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://d24i6afan5p8i" path="res://images/joystick_circle_2.png" id="16_lyxhm"]
 [ext_resource type="Texture2D" uid="uid://bk0gn87vrmohi" path="res://images/joystick_circle.png" id="17_x04rt"]
 [ext_resource type="Texture2D" uid="uid://c8nhqaf5n4u22" path="res://images/coin_icon.png" id="18_4h45g"]
+[ext_resource type="Script" uid="uid://bduiqiaq7mf6w" path="res://pause_button.gd" id="19_1a4ff"]
 [ext_resource type="Script" uid="uid://b1xytupb5hr8m" path="res://enemy_spawner.gd" id="19_b514w"]
 [ext_resource type="PackedScene" uid="uid://dk75hb6nsdudh" path="res://normal_enemy.tscn" id="20_gl1p1"]
 [ext_resource type="PackedScene" uid="uid://c0mvjbk5klgn6" path="res://tank_enemy.tscn" id="21_3y4s7"]
@@ -299,6 +300,66 @@ border_width_left = 5
 border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
+border_color = Color(0.16862746, 0.12941177, 0.09411765, 1)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5fr5s"]
+bg_color = Color(0.9529412, 0.90588236, 0.78431374, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.16862746, 0.12941177, 0.09411765, 1)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ddx28"]
+bg_color = Color(0.94366235, 0.88787913, 0.7439097, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.16862746, 0.12941177, 0.09411765, 1)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_00dlp"]
+bg_color = Color(0.9960959, 0.96460533, 0.8583247, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.16862746, 0.12941177, 0.09411765, 1)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pqyxy"]
+bg_color = Color(0.068798296, 0.06879826, 0.06879828, 0.85490197)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yf8q3"]
+bg_color = Color(0.9098039, 0.72156864, 0.2901961, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
 border_color = Color(0.16862746, 0.12941177, 0.09411765, 1)
 corner_radius_top_left = 22
 corner_radius_top_right = 22
@@ -661,6 +722,49 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="PauseButton" type="Button" parent="UI" unique_id=385615703 node_paths=PackedStringArray("result_overlay")]
+custom_minimum_size = Vector2(60, 60)
+offset_left = 25.0
+offset_top = 25.0
+offset_right = 75.0
+offset_bottom = 75.0
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_5fr5s")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ddx28")
+theme_override_styles/hover = SubResource("StyleBoxFlat_00dlp")
+text = "| |"
+script = ExtResource("19_1a4ff")
+result_overlay = NodePath("../ResultOverlay")
+
+[node name="WaveProgress" type="ProgressBar" parent="UI" unique_id=1341818209]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -120.0
+offset_top = 25.0
+offset_right = 120.0
+offset_bottom = 55.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_pqyxy")
+theme_override_styles/fill = SubResource("StyleBoxFlat_yf8q3")
+show_percentage = false
+
+[node name="Label" type="Label" parent="UI/WaveProgress" unique_id=1500352164]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 16
+text = "WAVE PROGRESS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="EnemyPath" type="Path3D" parent="." unique_id=1843117255]
 curve = SubResource("Curve3D_byewv")
 
@@ -846,6 +950,7 @@ level_number = 5
 [connection signal="pressed" from="UI/ResultOverlay/ResultPanel/VBoxContainer/NextButton" to="LevelManager" method="_on_next_button_pressed"]
 [connection signal="pressed" from="UI/ResultOverlay/ResultPanel/VBoxContainer/RestartButton" to="LevelManager" method="_on_restart_button_pressed"]
 [connection signal="pressed" from="UI/ResultOverlay/ResultPanel/VBoxContainer/LevelsButton" to="LevelManager" method="_on_levels_button_pressed"]
+[connection signal="pressed" from="UI/PauseButton" to="UI/PauseButton" method="_on_pause_button_pressed"]
 [connection signal="all_waves_spawned" from="EnemySpawner" to="LevelManager" method="_on_enemy_spawner_all_waves_spawned"]
 [connection signal="timeout" from="EnemySpawner/SpawnTimer" to="EnemySpawner" method="_on_spawn_timer_timeout"]
 [connection signal="timeout" from="EnemySpawner/WaveTimer" to="EnemySpawner" method="_on_wave_timer_timeout"]

@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://c8nhqaf5n4u22" path="res://images/coin_icon.png" id="12_xrja0"]
 [ext_resource type="PackedScene" uid="uid://b78p7xe771h61" path="res://coin.tscn" id="13_0ourt"]
 [ext_resource type="Script" uid="uid://wrnrlklhjykj" path="res://platform_handling_helper.gd" id="14_w200a"]
+[ext_resource type="Script" uid="uid://bduiqiaq7mf6w" path="res://pause_button.gd" id="19_cp3aq"]
 [ext_resource type="PackedScene" uid="uid://u61xg06u4n6a" path="res://build_platform.tscn" id="19_ngvhw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6r3eb"]
@@ -298,6 +299,66 @@ border_width_left = 5
 border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
+border_color = Color(0.16862746, 0.12941177, 0.09411765, 1)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6dcgf"]
+bg_color = Color(0.9529412, 0.90588236, 0.78431374, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.16862746, 0.12941177, 0.09411765, 1)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ubuva"]
+bg_color = Color(0.94366235, 0.88787913, 0.7439097, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.16862746, 0.12941177, 0.09411765, 1)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0nm7o"]
+bg_color = Color(0.9960959, 0.96460533, 0.8583247, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.16862746, 0.12941177, 0.09411765, 1)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pjs8f"]
+bg_color = Color(0.068798296, 0.06879826, 0.06879828, 0.85490197)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bf7t1"]
+bg_color = Color(0.9098039, 0.72156864, 0.2901961, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
 border_color = Color(0.16862746, 0.12941177, 0.09411765, 1)
 corner_radius_top_left = 22
 corner_radius_top_right = 22
@@ -639,6 +700,49 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="PauseButton" type="Button" parent="UI" unique_id=1488987051 node_paths=PackedStringArray("result_overlay")]
+custom_minimum_size = Vector2(60, 60)
+offset_left = 25.0
+offset_top = 25.0
+offset_right = 75.0
+offset_bottom = 75.0
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_6dcgf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ubuva")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0nm7o")
+text = "| |"
+script = ExtResource("19_cp3aq")
+result_overlay = NodePath("../ResultOverlay")
+
+[node name="WaveProgress" type="ProgressBar" parent="UI" unique_id=1794424100]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -120.0
+offset_top = 25.0
+offset_right = 120.0
+offset_bottom = 55.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_pjs8f")
+theme_override_styles/fill = SubResource("StyleBoxFlat_bf7t1")
+show_percentage = false
+
+[node name="Label" type="Label" parent="UI/WaveProgress" unique_id=1066276526]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 16
+text = "WAVE PROGRESS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="EnemyPath" type="Path3D" parent="." unique_id=770286216]
 curve = SubResource("Curve3D_xwl8u")
 
@@ -788,6 +892,7 @@ level_number = 2
 [connection signal="pressed" from="UI/ResultOverlay/ResultPanel/VBoxContainer/NextButton" to="LevelManager" method="_on_next_button_pressed"]
 [connection signal="pressed" from="UI/ResultOverlay/ResultPanel/VBoxContainer/RestartButton" to="LevelManager" method="_on_restart_button_pressed"]
 [connection signal="pressed" from="UI/ResultOverlay/ResultPanel/VBoxContainer/LevelsButton" to="LevelManager" method="_on_levels_button_pressed"]
+[connection signal="pressed" from="UI/PauseButton" to="UI/PauseButton" method="_on_pause_button_pressed"]
 [connection signal="all_waves_spawned" from="EnemySpawner" to="LevelManager" method="_on_enemy_spawner_all_waves_spawned"]
 [connection signal="timeout" from="EnemySpawner/SpawnTimer" to="EnemySpawner" method="_on_spawn_timer_timeout"]
 [connection signal="timeout" from="EnemySpawner/WaveTimer" to="EnemySpawner" method="_on_wave_timer_timeout"]

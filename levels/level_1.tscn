@@ -28,6 +28,8 @@
 [ext_resource type="PackedScene" uid="uid://b78p7xe771h61" path="res://coin.tscn" id="14_vjtdm"]
 [ext_resource type="Script" uid="uid://wrnrlklhjykj" path="res://platform_handling_helper.gd" id="16_bgw3c"]
 [ext_resource type="PackedScene" uid="uid://u61xg06u4n6a" path="res://build_platform.tscn" id="18_jkxa6"]
+[ext_resource type="Script" uid="uid://bduiqiaq7mf6w" path="res://pause_button.gd" id="19_0x1rk"]
+[ext_resource type="Script" uid="uid://cdbfay8wrfx6w" path="res://levels/base_indicator.gd" id="20_pnpm1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6iypd"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -303,6 +305,49 @@ corner_radius_top_left = 22
 corner_radius_top_right = 22
 corner_radius_bottom_right = 22
 corner_radius_bottom_left = 22
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wrutv"]
+bg_color = Color(0.9529412, 0.90588236, 0.78431374, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.16862746, 0.12941177, 0.09411765, 1)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rf48r"]
+bg_color = Color(0.94366235, 0.88787913, 0.7439097, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.16862746, 0.12941177, 0.09411765, 1)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e5brb"]
+bg_color = Color(0.9960959, 0.96460533, 0.8583247, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.16862746, 0.12941177, 0.09411765, 1)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cj6k5"]
+bg_color = Color(0, 1, 0, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
 
 [sub_resource type="Curve3D" id="Curve3D_jka67"]
 _data = {
@@ -624,6 +669,82 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="PauseButton" type="Button" parent="UI" unique_id=1041297899 node_paths=PackedStringArray("result_overlay")]
+custom_minimum_size = Vector2(60, 60)
+offset_left = 25.0
+offset_top = 25.0
+offset_right = 75.0
+offset_bottom = 75.0
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_wrutv")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rf48r")
+theme_override_styles/hover = SubResource("StyleBoxFlat_e5brb")
+text = "| |"
+script = ExtResource("19_0x1rk")
+result_overlay = NodePath("../ResultOverlay")
+
+[node name="WaveProgress" type="ProgressBar" parent="UI" unique_id=1691237039]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -120.0
+offset_top = 25.0
+offset_right = 120.0
+offset_bottom = 55.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_lrvbd")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ryfpa")
+show_percentage = false
+
+[node name="Label" type="Label" parent="UI/WaveProgress" unique_id=1161368382]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 16
+text = "WAVE PROGRESS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BaseIndicator" type="Control" parent="UI" unique_id=657587654 node_paths=PackedStringArray("base", "camera")]
+custom_minimum_size = Vector2(130, 64)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("20_pnpm1")
+base = NodePath("../../Base")
+camera = NodePath("../../Camera3D")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/BaseIndicator" unique_id=1357537509]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Arrow" type="Label" parent="UI/BaseIndicator/HBoxContainer" unique_id=649060180]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "<"
+
+[node name="HealthCircle" type="PanelContainer" parent="UI/BaseIndicator/HBoxContainer" unique_id=868576978]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cj6k5")
+
+[node name="Percent" type="Label" parent="UI/BaseIndicator/HBoxContainer/HealthCircle" unique_id=737614548]
+layout_mode = 2
+text = "100%"
+horizontal_alignment = 1
+
 [node name="EnemyPath" type="Path3D" parent="." unique_id=1877342474]
 curve = SubResource("Curve3D_jka67")
 
@@ -722,6 +843,7 @@ script = ExtResource("12_i6od7")
 [connection signal="pressed" from="UI/ResultOverlay/ResultPanel/VBoxContainer/NextButton" to="LevelManager" method="_on_next_button_pressed"]
 [connection signal="pressed" from="UI/ResultOverlay/ResultPanel/VBoxContainer/RestartButton" to="LevelManager" method="_on_restart_button_pressed"]
 [connection signal="pressed" from="UI/ResultOverlay/ResultPanel/VBoxContainer/LevelsButton" to="LevelManager" method="_on_levels_button_pressed"]
+[connection signal="pressed" from="UI/PauseButton" to="UI/PauseButton" method="_on_pause_button_pressed"]
 [connection signal="all_waves_spawned" from="EnemySpawner" to="LevelManager" method="_on_enemy_spawner_all_waves_spawned"]
 [connection signal="timeout" from="EnemySpawner/SpawnTimer" to="EnemySpawner" method="_on_spawn_timer_timeout"]
 [connection signal="timeout" from="EnemySpawner/WaveTimer" to="EnemySpawner" method="_on_wave_timer_timeout"]

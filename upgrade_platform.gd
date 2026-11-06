@@ -61,8 +61,6 @@ func _on_upgrade_timer_timeout():
 			$UpgradeTimer.stop()
 			
 			tower.upgrade()
-	else:
-		$UpgradeTimer.stop()
 
 func add_coins(amount):
 	coins_in_flight -= 1

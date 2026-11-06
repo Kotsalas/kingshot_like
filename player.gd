@@ -12,6 +12,9 @@ var coin_counter_scale := Vector2.ONE
 
 const SPEED = 10.0
 const GRAVITY = 9.8
+const ACCELERATION = 40.0
+const BRAKING = 50.0
+const TURN_SPEED = 12.0
 
 var targets: Array[Node3D] = []
 var coins := 0
@@ -31,13 +34,26 @@ func _physics_process(delta):
 		$Muzzle.look_at(targets[0].global_position, Vector3.UP)
 	
 	var input = $"../UI/Joystick".get_input_vector()
-	var direction = Vector3(input.x, 0, input.y).normalized()
-	
-	if direction.length() > 0.01:
-		$player.look_at($player.global_position - direction, Vector3.UP)
-	
-	velocity.x = direction.x * SPEED
-	velocity.z = direction.z * SPEED
+	var target_velocity = Vector2(input.x, input.y) * SPEED
+	var current_velocity = Vector2(velocity.x, velocity.z)
+	var movement_rate = ACCELERATION if target_velocity.length() > 0.01 else BRAKING
+	current_velocity = current_velocity.move_toward(target_velocity, movement_rate * delta)
+	velocity.x = current_velocity.x
+	velocity.z = current_velocity.y
+
+	if input.length() > 0.01:
+		var current_rotation = $player.global_rotation
+		$player.look_at(
+			$player.global_position - Vector3(input.x, 0, input.y),
+			Vector3.UP
+		)
+		var target_yaw = $player.global_rotation.y
+		$player.global_rotation = current_rotation
+		$player.global_rotation.y = lerp_angle(
+			current_rotation.y,
+			target_yaw,
+			min(TURN_SPEED * delta, 1.0)
+		)
 	
 	move_and_slide()
 	
